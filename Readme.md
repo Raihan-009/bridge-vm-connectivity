@@ -40,7 +40,7 @@ sudo iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
 
 - This command sets up a NAT rule that masquerades outgoing packets from the specified outgoing interface, allowing the VMs connected to the bridge interface to communicate with external networks by translating their internal IP addresses to the external IP address of the host machine.
 
-![bridge-interface.png](%5BAdvanced%5D%20Setting%20up%20bridge%20interface%20between%20two%20b46cb38ea2bf4215b912e695e314c72a/bridge-interface.png)
+![bridge-interface.png](https://github.com/Raihan-009/bridge-vm-connectivity/blob/main/diagrams/bridge-interface.png?raw=true)
 
 ## **Part 2: VM Launch and Tap Device Configuration**
 
@@ -68,7 +68,7 @@ sudo ip link set dev $TAP_DEV master $BRIDGE
 
 - Before launching the VM, ensure that there is no existing tap device with the desired name. If there is, delete and recreate it. Then run the `VM Launch Script` . For now we will skip it.
 
-![tap-config.png](%5BAdvanced%5D%20Setting%20up%20bridge%20interface%20between%20two%20b46cb38ea2bf4215b912e695e314c72a/tap-config.png)
+![tap-config.png](https://github.com/Raihan-009/bridge-vm-connectivity/blob/main/diagrams/tap-config.png?raw=true)
 
 ## **Part 3: VM Interaction Setup**
 
@@ -94,7 +94,7 @@ sudo ip r add 192.168.1.1 via 192.168.1.7 dev eth0
 sudo ip r add default via 192.168.1.7 dev eth0
 ```
 
-![vm-01.png](%5BAdvanced%5D%20Setting%20up%20bridge%20interface%20between%20two%20b46cb38ea2bf4215b912e695e314c72a/vm-01.png)
+![vm-01.png](https://github.com/Raihan-009/bridge-vm-connectivity/blob/main/diagrams/vm-01.png?raw=true)
 
 1. **Verification:**
 
@@ -105,4 +105,4 @@ ping 192.168.1.7
 > By following these steps, we can configure another VM with a different tap device to connect to the same bridge interface, allowing multiple VMs to communicate with each other and the external network through the host machine.
 > 
 
-![vm-02.png](%5BAdvanced%5D%20Setting%20up%20bridge%20interface%20between%20two%20b46cb38ea2bf4215b912e695e314c72a/vm-02.png)
+![vm-02.png](https://github.com/Raihan-009/bridge-vm-connectivity/blob/main/diagrams/vm-02.png?raw=true)
